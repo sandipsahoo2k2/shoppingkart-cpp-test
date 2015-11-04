@@ -5,7 +5,7 @@ using namespace std;
 /* For interviewer's comfort this programme has been written to take products code in command line */
 /* If you want to run this in intercative mode recompile uncommenting the below line #define INTERACTIVE_MODE 1 */
 
-#define INTERACTIVE_MODE 1
+//#define INTERACTIVE_MODE 1
 
 void interctiveScan(PointOfSaleTerminal &pos)
 {

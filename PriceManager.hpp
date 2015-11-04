@@ -24,14 +24,14 @@ class PriceManager
 		/* if the key exist it will be over written with new price */
 		void addPrice(std::string code, int volume, double price) ;
 
-		/* remove product */
+		/* remove price info for a product code */
 		void removePrice(std::string code, int volume);
 		
 		/* calculate the actual price of a product depending upon the volume*/
-		/* it may return 0 in such case price information is missing */
+		/* it may return 0 in such case caller can assume price information is missing */
 		double getPrice(std::string code, int volume) ;
 		
-		/* Helper function for  printing all price information for product codes */
+		/* Helper function for  printing all price information for  all product codes */
 		std::string toString();
 
 };

@@ -42,7 +42,7 @@ class Inventory
 		void removeProduct(std::string code);
 
 		/*  get product details return NULL if it doesn't exist*/
-		IProduct* getProduct(std::string code);
+		IProduct* getProduct(std::string code) const;
 };
 
 #endif

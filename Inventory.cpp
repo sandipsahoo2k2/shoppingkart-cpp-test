@@ -27,11 +27,11 @@ void Inventory::initialise()
 	std::cout << "\n\nInitilisation finished with " << storeProducts.size() << " products";
 }
 
-IProduct* Inventory::getProduct(std::string code)
+IProduct* Inventory::getProduct(std::string code) const
 {
 	IProduct * product = NULL;
 	/* Check the product in store */
-	for(std::map<IProduct*, int>::iterator itr = storeProducts.begin(); itr != storeProducts.end(); itr++)
+	for(std::map<IProduct*, int>::const_iterator itr = storeProducts.begin(); itr != storeProducts.end(); itr++)
 	{
 		IProduct* temp = itr->first;
 		if(temp->getCode() == code)

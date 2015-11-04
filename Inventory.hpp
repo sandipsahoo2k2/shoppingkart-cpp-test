@@ -21,7 +21,8 @@ class Inventory
 	private:
 		std::map<IProduct*, int> storeProducts; //Act as a database for the store
 
-		/* Initialise with all product */
+		/* Initialise with all product, We could initialise products from  
+			main.cpp but as we are already given with 4 products I am calling this in constructor for ease */
 		void initialise() ;
 
 	public:
@@ -33,8 +34,9 @@ class Inventory
 			return storeProducts;
 		}
 	
-		/* add a new product to the store */	
-		void addProduct(std::string code, double unitPrice, int volumeFactor = 0, int volumePrice = 0) ;
+		/* add a new product to the store operator/user/client can call this function to add any new product, 
+			we are dealing with product codes only for now otherwise we can add other details aswell*/	
+		void addProduct(std::string code) ;
 
 		/* remove product */
 		void removeProduct(std::string code);

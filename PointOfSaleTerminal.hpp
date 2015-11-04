@@ -4,6 +4,7 @@
 #include <map>
 #include "Product.hpp"
 #include "Inventory.hpp"
+#include "PriceManager.hpp"
 using namespace std;
 
 #ifndef _POINT_OF_SALE_H_
@@ -14,12 +15,11 @@ class PointOfSaleTerminal
 {
 	private:
 		Inventory &inventory ;
-
-		float totalPrice; //Total Price
+		PriceManager &priceManager;
 
 		std::map<IProduct*, int> billingProducts; //customer bought products
 	public:
-		PointOfSaleTerminal(Inventory &inventory);
+		PointOfSaleTerminal(Inventory &inventory, PriceManager &priceManager);
 		~PointOfSaleTerminal();
 
 		int getTotalItems() const

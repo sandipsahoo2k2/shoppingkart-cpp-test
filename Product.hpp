@@ -11,22 +11,12 @@ using namespace std;
 class Product : public IProduct
 {
 private :
-	double unitPrice;
 	std::string code;
-	double volumePrice;
-	int volumeFactor;
+	/* we can add other details e.g name, weith etc etc*/
+	/* we are dealing with product codes only for now otherwise we can add other members e.g name, deatils, weight etc etc aswell*/	
 public :
 	Product(std::string productCode);
 	virtual ~Product();
-
-	/* setUnitPrice for the Product */
-	void setUnitPrice(double price);
-
-	/* setVlumePrice for product */
-	void setVolumePrice(int volume, double price);
-	
-	/* return correct price of the product for n items, define the interface function */
-	virtual double getPrice(int volume);
 
 	virtual const std::string& getCode() const
 	{
@@ -38,11 +28,6 @@ public :
         {
 		std::ostringstream displayString;
                 displayString <<  "\nProduct Code: " << code ;
-                displayString << "\nPrice: " <<  unitPrice << " Per One unit.";
-                if(volumeFactor > 1)
-                {
-                        displayString << "\nPrice: " <<  volumePrice << " per " << volumeFactor << " units.\n";
-                }
                 return std::string(displayString.str());
         }
 
@@ -50,11 +35,6 @@ public :
 	friend ostream &operator<< (ostream &output, const Product &product)
 	{
 		output << "\nProduct Code: " << product.code ;
-		output << "\nPrice: " <<  product.unitPrice << " Per One unit.";
-		if(product.volumeFactor > 1)
-		{
-			output << "\nPrice: " <<  product.volumePrice << " per " << product.volumeFactor << " units.\n";
-		}
 	        return output;
 	}
 };

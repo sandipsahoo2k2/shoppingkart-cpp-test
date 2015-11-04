@@ -11,13 +11,16 @@ int main(int argc, char *argv[])
 	else
 	{
 		Inventory *inventory = new Inventory();
-		PointOfSaleTerminal *terminal = new PointOfSaleTerminal(*inventory);
+		PriceManager *priceManager = new PriceManager();
+		//std::cout << priceManager->toString();
+		PointOfSaleTerminal *terminal = new PointOfSaleTerminal(*inventory, *priceManager);
 		for(int i = 1; i < argc ; i++)
 		{
 			terminal->scan(argv[i]);
 		}
 		terminal->calculateTotal();
 		delete terminal;
+		delete priceManager;
 		delete inventory;
 	}
 	return 0;

@@ -27,7 +27,7 @@ TEST_F(InventoryTest, HandleInitialise) {
 }
 
 TEST_F(InventoryTest, HandleAddProducts) {
-	inventory->addProduct("007", 7, 2, 10);
+	inventory->addProduct("007");
 	EXPECT_EQ(5, inventory->getStoreProducts().size());
 }
 

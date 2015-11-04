@@ -17,16 +17,14 @@ Inventory::~Inventory()
 
 void Inventory::initialise()
 {
-	std::cout << "\n//////////////*************////////////////\n";
-	std::cout << "\nInitilising store products ....\n";
+	std::cout << "\nInventory Initilising store products ....\n";
 
-	addProduct("A1", 1.25, 3, 3);
-	addProduct("3-Q", 4.25);
-	addProduct("45K11", 1, 6, 5);
-	addProduct("X1", 0.75);
+	addProduct("A1");
+	addProduct("3-Q");
+	addProduct("45K11");
+	addProduct("X1");
 
-	std::cout << "\nInitilisation finished with " << storeProducts.size() << " products\n";
-	std::cout << "\n//////////////***********////////////////\n";
+	std::cout << "\n\nInitilisation finished with " << storeProducts.size() << " products";
 }
 
 IProduct* Inventory::getProduct(std::string code)
@@ -39,17 +37,16 @@ IProduct* Inventory::getProduct(std::string code)
 		if(temp->getCode() == code)
 		{
 			product = temp;
+			break;
 		}
 	}
 	return product;
 }
 
-void Inventory::addProduct(std::string code, double unitPrice, int volumeFactor, int volumePrice)
+void Inventory::addProduct(std::string code)
 {
 	Product *product = new Product(code);
-	product->setUnitPrice(unitPrice);
-	product->setVolumePrice(volumeFactor, volumePrice);
-	std::cout << *product << std::endl;
+	std::cout << *product << " added.";
 	
 	std::map<IProduct*, int>::iterator itr = storeProducts.find(product);
                 if(itr == storeProducts.end()) //not found
@@ -73,6 +70,7 @@ void Inventory::removeProduct(std::string code)
 		{
 			product = temp;
 			storeProducts.erase(product);	
+			break;
 		}
 	}
 }

@@ -46,3 +46,11 @@ X1
 - Simple, Clean, Well-factored, OO, Complete Code
 - Complete test coverage
 - Clarity & completeness of communication
+
+# Running the programme
+
+- Run the makefile
+- It will create an executable PointOfSale.out
+- Now execute this programme with input product codes in command line e.g ./PointOfSale.out A1 3-Q 45K11 X1
+- You can also run this programme in intercative mode by uncommenting line #define INTERACTIVE_MODE 1 in main.cpp file and recompiling
+- In intercative mode you need not have to pass the codes in commandline just run it e.g  ./PointOfSale.out

@@ -28,13 +28,20 @@ int main(int argc, char *argv[])
 {
 	Inventory *inventory = new Inventory();
 	PriceManager *priceManager = new PriceManager();
-	//std::cout << priceManager->toString();
+
+	/* print the contents of PriceManager */
+	//std::cout << priceManager->toString();	//**** This is a commented code, helps in sanity testing
+
+	/* get and print the pricing info for a prodduct code e.g A1 */
+	//priceManager->getPriceMap("A1"); 		//**** This is a commented code, helps in sanity testing
+
+	/* Initialise the POS with inventory and price manager */
 	PointOfSaleTerminal *terminal = new PointOfSaleTerminal(*inventory, *priceManager);
 
 #ifndef INTERACTIVE_MODE
 	if ( argc < 2 )
 	{
-		std::cout << "\nPlease enter product codes separated by space as command line\n" ;
+		std::cout << "\n\nPlease enter product codes separated by space as command line\n" ;
 	}
 	else
 	{

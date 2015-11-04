@@ -33,11 +33,11 @@ void PriceManager::removePrice(std::string code, int volume)
 	prices.erase(codeKey);	
 }
 
-std::string PriceManager::toString()
+std::string PriceManager::toString() const
 {
 	std::ostringstream ss;
 	ss << "\nPrinitng pricing info for all products" << std::endl;
-	for(std::map<std::pair<std::string, int>, double>::iterator itr = prices.begin(); itr != prices.end(); ++itr)
+	for(std::map<std::pair<std::string, int>, double>::const_iterator itr = prices.begin(); itr != prices.end(); ++itr)
 	{
 		/* Map is sorted with highest volume/price first */
 		std::pair<std::string, int> tempCodeKey = itr->first;
@@ -47,40 +47,30 @@ std::string PriceManager::toString()
 	return std::string(ss.str());
 }
 
-double PriceManager::getPrice(std::string code, int volume)
+/* just a helper function to list all pricess for a code, may be ignored for review */
+std::map<int, double> PriceManager::getPriceMap(std::string code) const
 {
-	double totalPrice = 0;
 	bool matchCodeStart = false;
-	int countMatchOffers = 0;
-	std::cout << "\nCalculating price for " << volume << " " << code << "..."; 
-	/* get the first highest volume, price mapping and calculate the total price */
-	for(std::map<std::pair<std::string, int>, double>::iterator itr = prices.begin(); itr != prices.end(); ++itr)
+	std::map<int, double> priceMap ;
+	for(std::map<std::pair<std::string, int>, double>::const_iterator itr = prices.begin(); itr != prices.end(); ++itr)
 	{
-		/* Map is sorted with highest volume/price first */
 		std::pair<std::string, int> tempCodeKey = itr->first;
-		double itrPrice = itr->second;
-		std::string itrCode = tempCodeKey.first ;	
-		int itrVolume = tempCodeKey.second ;
+                double itrPrice = itr->second;
+                std::string itrCode = tempCodeKey.first ;
+                int itrVolume = tempCodeKey.second ;
+
 		if (code == itrCode) //code found
 		{
 			matchCodeStart = true;
-			countMatchOffers ++ ;
-			int factor = volume / itrVolume ;
-        		int remainder = volume % itrVolume;
-        		totalPrice += factor * itrPrice ;
-			if(remainder == 0)
-			{
-				std::cout << "\n\t\t$" << totalPrice ; 
-				break;
-			}
-			else
-			{
-				volume = remainder;
-			}
+			priceMap[itrVolume] = itrPrice;
 		}
 		else if(matchCodeStart == true)
 		{
-			std::cout << "\nMatched keys " << countMatchOffers ; 
+			std::cout << "\nListing all entries for " << code << std::endl ; 
+			for(std::map<int, double>::iterator itr=priceMap.begin(); itr != priceMap.end(); ++itr)
+			{
+				std::cout << "\n" << itr->first << " units cost $" << itr->second ;
+			}
 			break;
 		}
 	}
@@ -88,5 +78,51 @@ double PriceManager::getPrice(std::string code, int volume)
 	{
 		std::cout << "\nPrice for " << code << " is missing in the pricing manager !" ; 
 	}
-	return totalPrice;
+	return priceMap;
+}
+
+
+
+double PriceManager::getPrice(std::string code, int volume)
+{
+        double totalPrice = 0;
+        bool matchCodeStart = false;
+        int countMatchOffers = 0;
+        std::cout << "\nCalculating price for " << volume << " " << code << "...";
+        /* get the first highest volume, price mapping and calculate the total price */
+        for(std::map<std::pair<std::string, int>, double>::iterator itr = prices.begin(); itr != prices.end(); ++itr)
+        {
+                /* Map is sorted with highest volume/price first */
+                std::pair<std::string, int> tempCodeKey = itr->first;
+                double itrPrice = itr->second;
+                std::string itrCode = tempCodeKey.first ;
+                int itrVolume = tempCodeKey.second ;
+                if (code == itrCode) //code found
+                {
+                        matchCodeStart = true;
+                        countMatchOffers ++ ;
+                        int factor = volume / itrVolume ;
+                        int remainder = volume % itrVolume;
+                        totalPrice += factor * itrPrice ;
+                        if(remainder == 0)
+                        {
+                                std::cout << "\n\t\t$" << totalPrice ;
+                                break;
+                        }
+                        else
+                        {
+                                volume = remainder;
+                        }
+                }
+                else if(matchCodeStart == true)
+                {
+                        std::cout << "\nMatched keys " << countMatchOffers ;
+                        break;
+                }
+        }
+        if(matchCodeStart == false)
+        {
+                std::cout << "\nPrice for " << code << " is missing in the pricing manager !" ;
+        }
+        return totalPrice;
 }

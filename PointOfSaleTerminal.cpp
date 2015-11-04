@@ -44,7 +44,7 @@ double PointOfSaleTerminal::calculateTotal()
 		totalCount += productCount;
 		totalPrice += priceManager.getPrice(product->getCode(), productCount); //check with price manager the actual price
 	}
-	std::cout << "\n\nAllTotal for " << totalCount << " items with " << billingProducts.size() << " unique types is $" << totalPrice << std::endl << std::endl;
+	std::cout << "\n\nAllTotal for " << totalCount << " items with " << billingProducts.size() << " product category is $" << totalPrice << std::endl << std::endl;
 	return totalPrice;
 }
 

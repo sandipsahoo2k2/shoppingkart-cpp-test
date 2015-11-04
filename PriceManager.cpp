@@ -67,7 +67,7 @@ double PriceManager::getPrice(std::string code, int volume)
 			countMatchOffers ++ ;
 			int factor = volume / itrVolume ;
         		int remainder = volume % itrVolume;
-        		totalPrice = factor * itrPrice ;
+        		totalPrice += factor * itrPrice ;
 			if(remainder == 0)
 			{
 				std::cout << "\n\t\t$" << totalPrice ; 

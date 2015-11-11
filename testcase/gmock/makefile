@@ -1,6 +1,6 @@
-CPP_DIR = ..
-GTEST_LIB = ../../gmock-1.7.0/make
-GTEST_DIR = ../../gmock-1.7.0/gtest/include
+CPP_DIR = ../..
+GTEST_LIB = ../../../gmock-1.7.0/make
+GTEST_DIR = ../../../gmock-1.7.0/gtest/include
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
                 $(GTEST_DIR)/include/gtest/internal/*.h
 

@@ -1,4 +1,4 @@
-#include "../Inventory.hpp"
+#include "../../Inventory.hpp"
 #include "gtest/gtest.h"
 
 namespace {

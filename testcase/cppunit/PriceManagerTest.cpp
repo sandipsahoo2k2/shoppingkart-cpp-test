@@ -38,6 +38,7 @@ protected:
  /* getPrice() should return 4 unit price as 3$ */
   void addPrice()
   {
+	priceManagerToBeTested->addPrice("TEST-CODE-XYZ", 1, 1);
 	priceManagerToBeTested->addPrice("TEST-CODE-XYZ", 4, 3);
 	CPPUNIT_ASSERT(priceManagerToBeTested->getPrice("TEST-CODE-XYZ", 4) == 3);
   }

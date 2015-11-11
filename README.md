@@ -47,10 +47,15 @@ X1
 - Complete test coverage
 - Clarity & completeness of communication
 
-# Running the programme
+# Running the program
 
 - Run the makefile
 - It will create an executable PointOfSale.out
-- Now execute this programme with input product codes in command line e.g ./PointOfSale.out A1 3-Q 45K11 X1
-- You can also run this programme in intercative mode by uncommenting line #define INTERACTIVE_MODE 1 in main.cpp file and recompiling
+- Now execute this program with input product codes in command line e.g ./PointOfSale.out A1 3-Q 45K11 X1
+- You can also run this program in intercative mode by uncommenting line #define INTERACTIVE_MODE 1 in main.cpp file and recompiling
 - In intercative mode you need not have to pass the codes in commandline just run it e.g  ./PointOfSale.out
+
+# Testing the program
+- shoppingkart-cpp-test/testcases folder contains gmock and cppunit folders with testcases
+- gmock folder contains testcases for Inventory class compiled against gmock-1.7.0, execute ./GMock.out and see the result
+- cppunit folder contains gmock testcases for PriceManager class compiled against cppunit-1.12.1, execute ./CPPUnit.out and see the result

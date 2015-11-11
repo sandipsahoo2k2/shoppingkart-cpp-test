@@ -35,7 +35,7 @@ private:
 protected:
  /* add TEST-CODE-XYZ which cost 1$ for 1 unit */
  /* add TEST-CODE-XYZ which cost 3$ for 4 unit */
- /* test 4 unit price as 3$ */
+ /* getPrice() should return 4 unit price as 3$ */
   void addPrice()
   {
 	priceManagerToBeTested->addPrice("TEST-CODE-XYZ", 4, 3);
@@ -44,7 +44,7 @@ protected:
  /* add TEST-CODE-XYZ which cost 1$ for 1 unit */
  /* add TEST-CODE-XYZ which cost 3$ for 4 unit */
  /* remove TEST-CODE-XYZ which cost 3$ for 4 unit */
- /* test 4 unit price as 4$ */
+ /* getPrice() should return 4 unit price as 4$ */
   void removePrice()
   {
 	priceManagerToBeTested->addPrice("TEST-CODE-XYZ", 1, 1);
@@ -52,6 +52,9 @@ protected:
 	priceManagerToBeTested->removePrice("TEST-CODE-XYZ", 4);
 	CPPUNIT_ASSERT(priceManagerToBeTested->getPrice("TEST-CODE-XYZ", 4) == 4);
   }
+
+ /* getPrice() NEED NOT be tested as thats how we have already verified other functions */
+
 };
 
 int main(int argc, char **argv)

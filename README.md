@@ -58,4 +58,4 @@ X1
 # Testing the program
 - shoppingkart-cpp-test/testcases folder contains gmock and cppunit folders with testcases
 - gmock folder contains testcases for Inventory class compiled against gmock-1.7.0, execute ./GMock.out and see the result
-- cppunit folder contains gmock testcases for PriceManager class compiled against cppunit-1.12.1, execute ./CPPUnit.out and see the result
+- cppunit folder contains testcases for PriceManager class compiled against cppunit-1.12.1, execute ./CPPUnit.out and see the result
